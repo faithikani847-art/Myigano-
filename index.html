@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Myigano - Verify any account in seconds</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{background:#f8f9ff;color:#0f172a;line-height:1.5}
+a{color:inherit;text-decoration:none}
+.topbar{max-width:1280px;margin:0 auto;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);z-index:20;border-bottom:1px solid #e8eaff}
+.logo{font-weight:800;font-size:26px;letter-spacing:-.5px;background:linear-gradient(135deg,#2563eb,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:18px;font-size:13px;font-weight:600;color:#475569}
+.btn{padding:11px 20px;border-radius:999px;font-weight:700;font-size:13px;border:none;cursor:pointer}
+.btn-grad{background:linear-gradient(135deg,#2563eb,#ec4899);color:#fff;box-shadow:0 6px 20px rgba(37,99,235,.25)}
+.btn-white{background:#fff;border:1.5px solid #dbeafe;color:#2563eb}
+.hero{max-width:1280px;margin:0 auto;padding:48px 20px 30px;display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:center}
+.hero h1{font-size:56px;line-height:.95;letter-spacing:-1.8px;font-weight:800}
+.hero h1 span{background:linear-gradient(135deg,#2563eb,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:#64748b;font-size:18px;margin:16px 0 24px;max-width:560px}
+.search{display:flex;gap:8px;background:#fff;border:1px solid #e0e7ff;padding:6px;border-radius:16px;box-shadow:0 10px 24px rgba(37,99,235,.08);max-width:580px}
+.search input{flex:1;border:none;outline:none;padding:12px 16px;font-size:14px;background:transparent}
+.search button{background:linear-gradient(135deg,#2563eb,#ec4899);color:#fff;border:none;padding:12px 22px;border-radius:12px;font-weight:700;cursor:pointer}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.tag{background:#fff;border:1px solid #e0e7ff;padding:6px 12px;border-radius:999px;font-size:11px;font-weight:700;color:#334155}
+.phone-card{max-width:400px;background:linear-gradient(135deg,#1e40af,#7c3aed 45%,#ec4899);border-radius:28px;padding:22px;color:#fff;box-shadow:0 20px 60px rgba(37,99,235,.35);transition:all .4s}
+.ph{display:flex;justify-content:space-between;font-size:11px;opacity:.8;margin-bottom:12px}
+.pnum{font-size:24px;font-weight:800;margin:6px 0 16px;letter-spacing:.3px;transition:.3s}
+.pbox{background:rgba(255,255,255,.16);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.2);border-radius:16px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center}
+.code{font-size:26px;font-weight:800;letter-spacing:2px}
+.live{font-size:10px;background:#fff;color:#ec4899;padding:5px 10px;border-radius:999px;font-weight:800}
+.sec{max-width:1280px;margin:0 auto;padding:56px 20px}
+.sec h2{font-size:32px;font-weight:800;letter-spacing:-.6px}
+.sub{color:#64748b;font-size:15px;margin:10px 0 26px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{background:#fff;border:1px solid #e0e7ff;border-radius:18px;padding:22px;box-shadow:0 4px 20px rgba(37,99,235,.05)}
+.card b{font-size:15px}
+.card p{color:#64748b;font-size:13px;margin:8px 0 12px;line-height:1.6}
+.link{color:#2563eb;font-weight:700;font-size:13px;cursor:pointer}
+.link.pink{color:#ec4899}
+.apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
+.app{border:1.5px solid #e0e7ff;background:#fff;border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:13px;cursor:pointer;transition:.2s}
+.app.active{background:linear-gradient(135deg,#2563eb,#ec4899);color:#fff;border-color:transparent;box-shadow:0 8px 18px rgba(37,99,235,.28);transform:translateY(-1px)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.snum{width:32px;height:32px;border-radius:999px;background:linear-gradient(135deg,#2563eb,#ec4899);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;margin-bottom:12px}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.faqs{margin-top:22px;max-width:800px}
+.faq{background:#fff;border:1px solid #eef2ff;padding:18px;border-radius:12px;margin-bottom:8px;cursor:pointer}
+.faq b{font-size:14px}
+.faq p{display:none;color:#64748b;font-size:13px;margin-top:10px;line-height:1.6}
+.faq.open p{display:block}
+.cta{background:linear-gradient(135deg,#2563eb,#7c3aed 55%,#ec4899);border-radius:24px;padding:52px;text-align:center;color:#fff;box-shadow:0 20px 50px rgba(37,99,235,.3)}
+footer{border-top:1px solid #e0e7ff;background:#fff;padding:32px 20px}
+.foot{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.5fr .7fr .7fr .8fr;gap:20px;font-size:12px;color:#64748b}
+.foot b{color:#0f172a;font-size:13px}
+.modal{position:fixed;inset:0;background:rgba(15,23,42,.6);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:100;padding:16px;overflow-y:auto}
+.modal-box{background:#fff;border-radius:20px;padding:22px;max-width:440px;width:100%}
+.modal-box h3{font-size:18px;font-weight:800;background:linear-gradient(135deg,#2563eb,#ec4899);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.modal-box input,.modal-box select{width:100%;padding:12px;border:1.5px solid #e0e7ff;border-radius:12px;margin:6px 0;font-size:13px;outline:none}
+.pay{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.pay-opt{border:1.5px solid #e0e7ff;border-radius:12px;padding:10px;text-align:center;font-weight:700;font-size:12px;cursor:pointer;background:#fff}
+.pay-opt.active{border-color:#2563eb;background:linear-gradient(135deg,#eff6ff,#fdf2f8);color:#2563eb}
+.inbox{position:fixed;bottom:18px;right:18px;background:linear-gradient(135deg,#1e40af,#ec4899);color:#fff;padding:16px 20px;border-radius:16px;font-size:13px;display:none;z-index:60;max-width:320px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+@media(max-width:900px){.hero{grid-template-columns:1fr}.hero h1{font-size:38px}.grid3,.steps,.why,.foot{grid-template-columns:1fr}.nav-links{display:none}}
+</style>
+</head>
+<body>
+<div class="topbar">
+<div class="logo">myigano</div>
+<div class="nav-links"><span>Numbers · Emails · Proxies</span></div>
+<div style="display:flex;gap:8px"><button class="btn btn-white" onclick="openM()">Sign in</button><button class="btn btn-grad" onclick="openM()">Create free account</button></div>
+</div>
+<div class="hero">
+<div>
+<h1>Verify any account <span>in seconds.</span></h1>
+<p>Temporary phone numbers and email addresses to receive your verification codes, plus static residential proxies to keep your accounts safe. No code, no charge.</p>
+<div style="display:flex;gap:10px;flex-wrap:wrap"><button class="btn btn-grad" onclick="openM()">Create free account</button><button class="btn btn-white" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">See prices</button></div>
+<div class="tags"><span class="tag">100+ apps</span><span class="tag">190+ countries</span><span class="tag">NGN local prices</span><span class="tag" style="color:#ec4899;border-color:#fce7f3">💙💗 Blue & Pink</span></div>
+<div class="search" style="margin-top:22px"><input id="sInput" placeholder="Search: WhatsApp, Telegram, TikTok..." oninput="filterApps()"><button onclick="openM()">Buy Number</button></div>
+</div>
+<div><div class="phone-card" id="phoneCard"><div class="ph"><span>Example</span><span>● Live changing</span></div><div style="font-size:13px;opacity:.9" id="appLab">WhatsApp · Code received</div><div style="display:flex;justify-content:space-between;margin-top:4px"><span style="font-size:11px;opacity:.7">Code received</span><span style="font-size:11px;opacity:.7" id="timer">now</span></div><div class="pnum" id="pNum">+44 7700 900 418</div><div class="pbox"><div><div style="font-size:11px;opacity:.8">Your code</div><div class="code" id="pCode">482 913</div></div><div class="live">Received</div></div></div></div>
+</div>
+<div class="sec" id="services"><div style="font-size:12px;font-weight:700;color:#64748b;letter-spacing:.8px">Services</div><h2>Everything you need to verify and run your accounts</h2><div class="grid3" style="margin-top:18px"><div class="card" style="border-top:3px solid #2563eb"><b>📱 Phone numbers</b><p>Receive SMS codes for WhatsApp, Telegram, TikTok and 100+ apps, from numbers in 190+ countries including Nigeria.</p><span class="link" onclick="openM()">Get a number →</span></div><div class="card" style="border-top:3px solid #ec4899"><b>✉️ Emails</b><p>A temporary Gmail, Outlook or other address for any website. The code from its email shows up here on Myigano.</p><span class="link pink" onclick="openM()">Get an email →</span></div><div class="card" style="border-top:3px solid #7c3aed"><b>🌐 Proxies</b><p>A static residential IP in the US, UK, Nigeria and more, so each account always logs in from the same place.</p><span class="link" style="color:#7c3aed" onclick="openM()">See proxies →</span></div></div></div>
+<div class="sec"><div style="font-size:12px;font-weight:700;color:#64748b;letter-spacing:.8px">Phone numbers</div><h2>Numbers for the apps you use</h2><p class="sub">Pick an app to see every country, its price and how reliable it is right now. Prices in NGN.</p><div class="apps" id="appsGrid"><div class="app active" data-app="WhatsApp">WhatsApp <span>₦450</span></div><div class="app" data-app="Telegram">Telegram <span>₦380</span></div><div class="app" data-app="TikTok">TikTok <span>₦400</span></div><div class="app" data-app="Instagram / Threads">Instagram / Threads <span>₦500</span></div><div class="app" data-app="Facebook">Facebook <span>₦450</span></div><div class="app" data-app="Google / Gmail / YouTube">Google / Gmail / YouTube <span>₦600</span></div><div class="app" data-app="X (Twitter)">X (Twitter) <span>₦420</span></div><div class="app" data-app="Snapchat">Snapchat <span>₦380</span></div></div><div style="margin-top:14px"><span class="link" onclick="openM()">See all 100+ apps →</span></div></div>
+<div class="sec"><div style="font-size:12px;font-weight:700;color:#64748b;letter-spacing:.8px">How it works</div><h2>Verified in three steps</h2><div class="steps" style="margin-top:18px"><div class="card"><div class="snum">01</div><b>Top up</b><p>Create your Myigano account and add money with bank transfer, card, OPay, PalmPay or mobile money.</p></div><div class="card"><div class="snum" style="background:linear-gradient(135deg,#ec4899,#f43f5e)">02</div><b>Pick what you need</b><p>A number, an email or a proxy. You see the exact NGN price before you buy.</p></div><div class="card"><div class="snum">03</div><b>Get your code</b><p>Use the number or email to sign up. The code shows up on Myigano within seconds with blue-pink animation.</p></div></div></div>
+<div class="sec"><div style="font-size:12px;font-weight:700;color:#64748b;letter-spacing:.8px">Why Myigano</div><div class="why" style="margin-top:12px"><div class="card"><b>💙 Pay only for codes you receive</b><p>No code? The money goes back to your balance by itself. You can also cancel before the code arrives (from 2 minutes after buying).</p></div><div class="card"><b>💗 Codes in seconds</b><p>Your number is ready right away and the code appears on screen as soon as it arrives. No need to refresh - live changing.</p></div><div class="card"><b>💙 Prices in your currency</b><p>See every price in NGN and top up with payment methods you already use: Paystack, Bank, OPay, PalmPay.</p></div><div class="card"><b>Ranked by success</b><p>For every app, countries are ranked by how often their numbers actually received a code recently.</p></div><div class="card"><b>Keep your number private</b><p>Sign up for apps and websites without giving out your personal phone number. Myigano keeps it private.</p></div><div class="card"><b>Verify from anywhere</b><p>When an app doesn't accept your country's numbers, use a number from a country it does - 190+ countries.</p></div></div>
+<div class="faqs"><div style="font-size:12px;font-weight:700;color:#64748b;letter-spacing:.8px;margin:18px 0 10px">FAQ</div><h2 style="font-size:22px;margin-bottom:14px">Questions, answered</h2>
+<div class="faq open"><b>What is a virtual number?</b><p>A virtual number is a real mobile number that receives SMS online for OTP verification on Myigano instead of your personal SIM.</p></div>
+<div class="faq"><b>What are the temporary emails for?</b><p>Temporary emails work like virtual numbers but for email OTPs - Gmail, Outlook codes show in your Myigano inbox instantly.</p></div>
+<div class="faq"><b>What is a proxy and do I need one?</b><p>A static residential proxy gives you same IP location for each account so platforms don't flag you. Needed for multiple accounts.</p></div>
+<div class="faq"><b>What happens if I don't receive a code?</b><p>You are not charged. Your NGN is returned to balance automatically within minutes. No risk.</p></div>
+<div class="faq"><b>How do I pay?</b><p>Paystack, Bank Transfer, Debit Card, USSD, OPay, PalmPay, Moniepoint - all in NGN. Secure and instant.</p></div>
+<div class="faq"><b>How long can I keep the number?</b><p>Temporary numbers are 20 mins for one code. Rent longer for re-verification if needed.</p></div>
+<div class="faq"><b>Which country should I choose?</b><p>Myigano ranks countries by success rate. Nigeria, USA, UK have highest success for most apps. Pick top ranked.</p></div>
+<div class="faq"><b>Is it safe?</b><p>Yes. Myigano keeps numbers private to you during rental and does not link to your personal identity.</p></div>
+</div>
+<div class="cta" style="margin-top:36px"><h2>Get your first code in a minute.</h2><p style="opacity:.9;margin:14px 0 22px">Free to sign up. Top up only when you need something.</p><button class="btn" style="background:#fff;color:#2563eb" onclick="openM()">Create free account</button></div>
+</div>
+<footer><div class="foot"><div><div class="logo">myigano</div><div style="margin-top:8px">Phone numbers, emails and proxies for account verification.<br><br>support@myigano.com<br>© 2026 Myigano - Blue & Pink Edition</div></div><div><b>Product</b><br><br>Phone numbers<br>Emails<br>Proxies<br>How it works</div><div><b>Help & FAQ</b><br><br>Help & FAQ<br>API for developers<br>Get the app<br>Account</div><div><b>Payment Methods</b><br><br>Paystack<br>Bank Transfer<br>OPay / PalmPay<br>Debit Card / USSD<br>Legal: Terms / Privacy</div></div></footer>
+<div class="inbox" id="inbox"></div>
+<div class="modal" id="modal"><div class="modal-box">
+<h3>Buy Myigano Number - Blue Pink 💙💗</h3><p style="font-size:12px;color:#64748b;margin:6px 0 12px">All payment methods in NGN - Live changing demo</p>
+<label style="font-size:12px;font-weight:700">Select App</label><select id="mApp"><option>WhatsApp</option><option>Telegram</option><option>TikTok</option><option>Instagram / Threads</option><option>Facebook</option><option>Google / Gmail / YouTube</option><option>X (Twitter)</option><option>Snapchat</option></select>
+<label style="font-size:12px;font-weight:700">Country & Price</label><select id="mCountry"><option>Nigeria - ₦450</option><option>USA - ₦600</option><option>UK - ₦500</option><option>Canada - ₦550</option><option>Germany - ₦520</option><option>India - ₦400</option></select>
+<label style="font-size:12px;font-weight:700">Your Email</label><input id="mEmail" placeholder="you@email.com for receipt">
+<label style="font-size:12px;font-weight:700;margin-top:8px;display:block">Choose Payment Method (NGN)</label>
+<div class="pay"><div class="pay-opt active" onclick="selPay(this)" data-pay="Paystack">💳 Paystack</div><div class="pay-opt" onclick="selPay(this)" data-pay="Bank Transfer">🏦 Bank Transfer</div><div class="pay-opt" onclick="selPay(this)" data-pay="OPay">📱 OPay</div><div class="pay-opt" onclick="selPay(this)" data-pay="PalmPay">💰 PalmPay</div><div class="pay-opt" onclick="selPay(this)" data-pay="Card">💎 Card</div><div class="pay-opt" onclick="selPay(this)" data-pay="USSD">📲 USSD</div></div>
+<button class="btn btn-grad" style="width:100%;padding:14px;margin-top:8px" onclick="pay()">Pay Now - <span id="payLab">Paystack</span> (NGN)</button>
+<p style="font-size:11px;color:#64748b;text-align:center;margin-top:8px">Secure • Instant activation • No code = refund</p>
+<button class="btn btn-white" style="width:100%;margin-top:10px" onclick="closeM()">Cancel</button>
+</div></div>
+<script>
+let sel='Paystack';
+const data=[{app:"WhatsApp",num:"+44 7700 900 418",code:"482 913"},{app:"Telegram",num:"+1 415 555 2671",code:"719 042"},{app:"Google / Gmail / YouTube",num:"+234 810 123 4567",code:"903 551"},{app:"Facebook",num:"+44 7700 900 229",code:"104 887"},{app:"TikTok",num:"+33 6 12 34 56 78",code:"556 201"},{app:"Instagram / Threads",num:"+1 650 555 0199",code:"332 764"},{app:"WhatsApp",num:"+234 803 456 7890",code:"127 490"},{app:"X (Twitter)",num:"+49 170 1234567",code:"884 221"}];
+let i=0;
+function rotate(){i=(i+1)%data.length;let l=document.getElementById('appLab'),n=document.getElementById('pNum'),c=document.getElementById('pCode'),t=document.getElementById('timer');l.style.opacity=0;n.style.opacity=0;c.style.opacity=0;setTimeout(()=>{l.innerText=data[i].app+" · Code received";n.innerText=data[i].num;c.innerText=data[i].code;t.innerText='now';l.style.opacity=1;n.style.opacity=1;c.style.opacity=1;},260);}setInterval(rotate,2600);
+setInterval(()=>{let t=document.getElementById('timer');if(t.innerText==='now') t.innerText='2s ago';},1200);
+function filterApps(){let q=document.getElementById('sInput').value.toLowerCase();document.querySelectorAll('.app').forEach(a=>{a.style.display=a.dataset.app.toLowerCase().includes(q)?'flex':'none';});}
+document.querySelectorAll('.app').forEach(a=>{a.addEventListener('click',()=>{document.querySelectorAll('.app').forEach(x=>x.classList.remove('active'));a.classList.add('active');document.getElementById('appLab').innerText=a.dataset.app+" · Code received";document.getElementById('sInput').value=a.dataset.app;document.getElementById('mApp').value=a.dataset.app;});});
+document.querySelectorAll('.faq').forEach(f=>{f.addEventListener('click',()=>f.classList.toggle('open'));});
+function openM(){document.getElementById('modal').style.display='flex';}
+function closeM(){document.getElementById('modal').style.display='none';}
+function selPay(el){document.querySelectorAll('.pay-opt').forEach(o=>o.classList.remove('active'));el.classList.add('active');sel=el.dataset.pay;document.getElementById('payLab').innerText=sel;}
+function pay(){let app=document.getElementById('mApp').value;let country=document.getElementById('mCountry').value;closeM();let box=document.getElementById('inbox');box.style.display='block';box.innerHTML='<b>Processing '+sel+'... 💙💗</b><br>App: '+app+'<br>'+country;setTimeout(()=>{let num=data[Math.floor(Math.random()*data.length)].num;box.innerHTML='<b>Payment Success! '+sel+' ✅</b><br>Your '+app+' number:<br><b>'+num+'</b><br>Waiting for OTP...';},1100);setTimeout(()=>{let code=Math.floor(100000+Math.random()*900000);let s=String(code).slice(0,3)+' '+String(code).slice(3);box.innerHTML='<b>Code Received! 💙💗</b><br>App: '+app+'<br>Paid via: '+sel+'<br><b style="font-size:20px;letter-spacing:2px">'+s+'</b>';document.getElementById('pCode').innerText=s;document.getElementById('pNum').innerText=data[Math.floor(Math.random()*data.length)].num;document.getElementById('appLab').innerText=app+' · Code received';},3000);setTimeout(()=>{box.style.display='none';},9000);}
+document.getElementById('modal').addEventListener('click',e=>{if(e.target.id==='modal') closeM();});
+</script>
+</body>
+</html>
